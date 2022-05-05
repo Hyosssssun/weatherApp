@@ -1,13 +1,15 @@
 import React from 'react'
 import './detail.css'
 
-export default function Detail({ weatherInfo }) {
-  const { day, date, weather, icon, tempAver, tempMin, tempMax, humidity, sunrise, sunset, feelsLike } = weatherInfo;
-  console.log({ weatherInfo })
+export default function Detail({ displayInfo, basicInfo }) {
+  const { day, date, weather, icon, tempAver, tempMin, tempMax, humidity, sunrise, sunset, feelsLike } = displayInfo;
+  const {city} = basicInfo
+  console.log({ displayInfo })
   return (
     <section className='detail-card'>
       <div className='detail-card-day'>
         <h1>{day} {date}</h1>
+      <h3>{city}</h3>
       </div>
         <img src={`http://openweathermap.org/img/w/${icon}.png`} alt="weather-icon"/>
       <div className='detail-card-info'>
@@ -29,7 +31,7 @@ export default function Detail({ weatherInfo }) {
 		// 			<h3>{basicInfo.day}, {basicInfo.date} in {basicInfo.city}</h3>
 		// 		)}
 		// 		--------------------------------------------------------------------
-		// 		{weatherInfo?.map((day, index)=>
+		// 		{displayInfo?.map((day, index)=>
 		// 			<div key={index}>
 		// 				<h2>{day.day} {day.date}</h2>
 		// 				<p>Today is : {day.weather}</p>
