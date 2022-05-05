@@ -11,6 +11,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 2rem;
+  margin: 0 0 0 1rem;
 }
 .smallcard:hover {
   box-shadow: 1px 1px;
