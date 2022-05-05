@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./smallCard.css";
 
-export default function SmallCard({ weatherInfo, handleClick }) {
+export default function SmallCard({ weatherInfo }) {
+  const [indexOfDay, setIndexOfDay] = useState(0)
+  // function handleClick(index){
+  //   console.log(index)
+  // }
   return (
     <section className="smallcardcontainer">
       {weatherInfo?.map((day, index) => (
-        <div className="smallcard" key={index} onClick={()=>handleClick(index)}>
+        <div className="smallcard" key={index} onClick={(e)=> console.log(e.target.key)}>
           <h2>{day.day}</h2>
           <div className="rightsidesmallcard">
           <img

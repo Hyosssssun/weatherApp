@@ -1,10 +1,9 @@
 import React from 'react'
 import './detail.css'
 
-export default function Detail({ displayInfo, basicInfo }) {
-  const { day, date, weather, icon, tempAver, tempMin, tempMax, humidity, sunrise, sunset, feelsLike } = displayInfo;
-  const {city} = basicInfo
-  console.log({ displayInfo })
+export default function Detail({ weatherInfo, basicInfo }) {
+  const { day, date, weather, icon, tempAver, tempMin, tempMax, humidity, sunrise, sunset, feelsLike } = weatherInfo;
+  const { city } = basicInfo
   return (
     <section className='detail-card'>
       <div className='detail-card-day'>

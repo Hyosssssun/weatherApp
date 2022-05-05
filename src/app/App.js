@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   const [location, setLocation] = useState("");
   const [weatherInfo, setWeatherInfo] = useState([]);
-  const [displayInfo, setDisplayInfo] = useState([])
+//   const [displayInfo, setDisplayInfo] = useState({})
   const [basicInfo, setBasicInfo] = useState({
     city: "",
     day: "",
@@ -80,11 +80,11 @@ function App() {
   console.log("***** basic info *****", basicInfo);
   console.log("***** weather info *****", weatherInfo);
 
-  function handleClick(index) {
-    console.log("i am clicking");
-	setDisplayInfo([weatherInfo[index]])
-  }
+//   function handleClick(index) {
+//     console.log("i am clicking", index);
+// 	setDisplayInfo(weatherInfo[index])
 
+//   }
   return (
     <div className="App">
       <section className="search-section">
@@ -104,13 +104,13 @@ function App() {
           <Detail
             className="detail-card"
             basicInfo={basicInfo}
-            weatherInfo={displayInfo}
+            weatherInfo={weatherInfo[0]}
           />
           <SmallCard
             className="small-card"
             basicInfo={basicInfo}
             weatherInfo={weatherInfo}
-            handleClick={handleClick}
+            // handleClick={handleClick}
           />
         </section>
       ) : (
