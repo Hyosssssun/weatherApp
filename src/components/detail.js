@@ -2,14 +2,14 @@ import React from 'react'
 import './detail.css'
 
 export default function Detail({ weatherInfo }) {
-  const { day, date, weather, icon, tempAver, tempMin, tempMax, humidity, sunrise, sunset, feelsLike } = weatherInfo[0];
+  const { day, date, weather, icon, tempAver, tempMin, tempMax, humidity, sunrise, sunset, feelsLike } = weatherInfo;
   console.log({ weatherInfo })
   return (
     <section className='detail-card'>
       <div className='detail-card-day'>
         <h1>{day} {date}</h1>
       </div>
-        <img src={`http://openweathermap.org/img/w/${icon}.png`}alt="weather-icon"/>
+        <img src={`http://openweathermap.org/img/w/${icon}.png`} alt="weather-icon"/>
       <div className='detail-card-info'>
         <h1>{tempAver}, {weather}</h1>
         <div className='detail-card-info-detail'>

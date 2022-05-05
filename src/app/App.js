@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SmallCard from "../components/smallCard";
 import moment from "moment-timezone";
 import Detail from "../components/detail";
+import SmallCard from "../components/smallCard";
 import "./App.css";
 
 function App() {
@@ -22,13 +22,13 @@ function App() {
 			fetch(currentAPI)
 				.then((response) => response.json())
 				.then((today) => {
-					console.log("***** today data *****", today);
+					// console.log("***** today data *****", today);
 					fetch(
 						`https://api.openweathermap.org/data/2.5/onecall?lat=${today.coord.lat}&lon=${today.coord.lon}&exclude=minutely&units=metric&appid=${apiKey}`
 					)
 						.then((res) => res.json())
 						.then((weeks) => {
-							console.log("***** week data *****", weeks);
+							// console.log("***** week data *****", weeks);
 							let date = moment
 								.unix(weeks.daily[0].dt)
 								.tz(weeks.timezone);
@@ -82,23 +82,29 @@ function App() {
   console.log("***** basic info *****", basicInfo);
   console.log("***** weather info *****", weatherInfo);
   return (
-    <div className="App">
-      <h1>Welcome to Our app </h1>
-      --------------------------------------------------------------------
-      <section className="search-section">
-        <h2>Enter your city!</h2>
-        <input
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
-          onKeyPress={searchLocation}
-          placeholder="Enter Location"
-          type="text"
-        />
-       </section>
-      <SmallCard basicInfo={basicInfo} weatherInfo={weatherInfo} />
-      {weatherInfo ? <Detail weatherInfo={weatherInfo} /> : <h3>Please enter your city</h3>}
-    </div>
-  );
+	<div className="App">
+		<section className="search-section">
+			<h1>Welcome to Our app </h1>
+			--------------------------------------------------------------------
+			<h2>Enter your city!</h2>
+			<input
+				value={location}
+				onChange={(event) => setLocation(event.target.value)}
+				onKeyPress={searchLocation}
+				placeholder="Enter Location"
+				type="text"
+			/>
+		</section>
+		{weatherInfo.length > 1 ? (
+			<section className="display-section">
+				<Detail className="detail-card" weatherInfo={weatherInfo[0]} />
+				<SmallCard className="small-card" basicInfo={basicInfo} weatherInfo={weatherInfo} />
+			</section>
+		) : (
+			<h3>Hi welcome</h3>
+		)}
+	</div>
+);
 }
 
 export default App;
