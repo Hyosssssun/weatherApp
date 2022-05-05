@@ -1,6 +1,7 @@
 # Forecast For Your Tour
 
 ** About The Project**
+
  -Hi I'm Elena - Product & Project Manager
  
  -Hi I'm Jacques - React Engineer
