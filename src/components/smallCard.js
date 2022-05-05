@@ -13,7 +13,7 @@ export default function SmallCard({ weatherInfo }) {
             src={`http://openweathermap.org/img/w/${day.icon}.png`}
             alt="weather-icon"
           />
-          <p className="temp">{Math.round(day.tempAver)} °C</p>
+          <p className="temp">{day.tempAver}</p>
         </div>
         </div>
       ))}

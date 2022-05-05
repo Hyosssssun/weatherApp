@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SmallCard from "../components/smallCard";
 import moment from "moment-timezone";
 import Detail from "../components/detail";
+import SmallCard from "../components/smallCard";
 import "./App.css";
 
 function App() {
@@ -22,13 +22,13 @@ function App() {
 			fetch(currentAPI)
 				.then((response) => response.json())
 				.then((today) => {
-					console.log("***** today data *****", today);
+					// console.log("***** today data *****", today);
 					fetch(
 						`https://api.openweathermap.org/data/2.5/onecall?lat=${today.coord.lat}&lon=${today.coord.lon}&exclude=minutely&units=metric&appid=${apiKey}`
 					)
 						.then((res) => res.json())
 						.then((weeks) => {
-							console.log("***** week data *****", weeks);
+							// console.log("***** week data *****", weeks);
 							let date = moment
 								.unix(weeks.daily[0].dt)
 								.tz(weeks.timezone);
@@ -52,16 +52,16 @@ function App() {
 											.format("Do MMMM"),
 										tempAver:
 											(
-												(Number(thisday.temp.max) +
+												Math.round((Number(thisday.temp.max) +
 													Number(thisday.temp.min)) /
 												2
-											).toFixed(2) + " °C",
-										tempMax: thisday.temp.max + " °C",
-										tempMin: thisday.temp.min + " °C",
+											)) + " °C",
+										tempMax: Math.round(Number(thisday.temp.max)) + " °C",
+										tempMin: Math.round(Number(thisday.temp.min)) + " °C",
 										icon: thisday.weather[0].icon,
 										weather: thisday.weather[0].main,
 										feelsLike:
-											thisday.feels_like.day + " °C",
+											Math.round(Number(thisday.feels_like.day)) + " °C",
 										humidity: thisday.humidity + "%",
 										sunrise: moment
 											.unix(thisday.sunrise)
@@ -83,27 +83,29 @@ function App() {
   console.log("***** weather info *****", weatherInfo);
   return (
 <div className="App">
-            <section className="search-section">
-                <h1>Forecast For Your Tour</h1>
-                -------------------------------------
-                <h2>Enter your city!</h2>
-                <input
-                    value={location}
-                    onChange={(event) => setLocation(event.target.value)}
-                    onKeyPress={searchLocation}
-                    placeholder="Enter Location"
-                    type="text"
-                />
-            </section>
-            <section className="display-section">
-                {weatherInfo ? (
-                    <Detail className="detail-card" weatherInfo={weatherInfo} />
-                ) : (
-                    <h3>Please enter your city</h3>
-                )}
-                <SmallCard className="small-card" basicInfo={basicInfo} weatherInfo={weatherInfo} />
-            </section>
-        </div>
+  <section className="search-section">
+      <h1>Forecast For Your Tour</h1>
+      -------------------------------------
+      <h2>Enter your city!</h2>
+      <input
+          value={location}
+          onChange={(event) => setLocation(event.target.value)}
+          onKeyPress={searchLocation}
+          placeholder="Enter Location"
+          type="text"
+      />
+		</section>
+		{weatherInfo.length > 1 ? (
+			<section className="display-section">
+				<Detail className="detail-card" weatherInfo={weatherInfo[0]} />
+				<SmallCard className="small-card" basicInfo={basicInfo} weatherInfo={weatherInfo} />
+			</section>
+		) : (
+      <section className="display-section">
+			 <h3>Please enter your city</h3>
+      </section>
+		)}
+	</div>
   )}
 
 export default App;
