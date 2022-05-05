@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./smallCard.css";
 
 export default function SmallCard({ weatherInfo }) {
-  const [indexOfDay, setIndexOfDay] = useState(0)
   // function handleClick(index){
   //   console.log(index)
   // }
