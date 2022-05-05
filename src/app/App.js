@@ -52,16 +52,16 @@ function App() {
 											.format("Do MMMM"),
 										tempAver:
 											(
-												(Number(thisday.temp.max) +
+												Math.round((Number(thisday.temp.max) +
 													Number(thisday.temp.min)) /
 												2
-											).toFixed(2) + " °C",
-										tempMax: thisday.temp.max + " °C",
-										tempMin: thisday.temp.min + " °C",
+											)) + " °C",
+										tempMax: Math.round(Number(thisday.temp.max)) + " °C",
+										tempMin: Math.round(Number(thisday.temp.min)) + " °C",
 										icon: thisday.weather[0].icon,
 										weather: thisday.weather[0].main,
 										feelsLike:
-											thisday.feels_like.day + " °C",
+											Math.round(Number(thisday.feels_like.day)) + " °C",
 										humidity: thisday.humidity,
 										sunrise: moment
 											.unix(thisday.sunrise)
