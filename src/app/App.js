@@ -62,7 +62,7 @@ function App() {
 										weather: thisday.weather[0].main,
 										feelsLike:
 											thisday.feels_like.day + " °C",
-										humidity: thisday.humidity,
+										humidity: thisday.humidity + "%",
 										sunrise: moment
 											.unix(thisday.sunrise)
 											.tz(weeks.timezone)
@@ -82,23 +82,28 @@ function App() {
   console.log("***** basic info *****", basicInfo);
   console.log("***** weather info *****", weatherInfo);
   return (
-    <div className="App">
-      <h1>Welcome to Our app </h1>
-      --------------------------------------------------------------------
-      <section className="search-section">
-        <h2>Enter your city!</h2>
-        <input
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
-          onKeyPress={searchLocation}
-          placeholder="Enter Location"
-          type="text"
-        />
-       </section>
-      <SmallCard basicInfo={basicInfo} weatherInfo={weatherInfo} />
-      {weatherInfo ? <Detail weatherInfo={weatherInfo} /> : <h3>Please enter your city</h3>}
-    </div>
-  );
-}
+<div className="App">
+            <section className="search-section">
+                <h1>Forecast For Your Tour</h1>
+                -------------------------------------
+                <h2>Enter your city!</h2>
+                <input
+                    value={location}
+                    onChange={(event) => setLocation(event.target.value)}
+                    onKeyPress={searchLocation}
+                    placeholder="Enter Location"
+                    type="text"
+                />
+            </section>
+            <section className="display-section">
+                {weatherInfo ? (
+                    <Detail className="detail-card" weatherInfo={weatherInfo} />
+                ) : (
+                    <h3>Please enter your city</h3>
+                )}
+                <SmallCard className="small-card" basicInfo={basicInfo} weatherInfo={weatherInfo} />
+            </section>
+        </div>
+  )}
 
 export default App;
