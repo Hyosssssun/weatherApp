@@ -34,7 +34,7 @@ We made some assumptions to have a direction to this problem. Team 4 (That's us 
 Forecast For Your Tour allows the user to input any location worldwide. The user can then view the weather forecast in their desired location for the 
 following 8 days. They can alsow access a more detailed view of their destination for one day, this will give them information on humidity levels, how the temperature feels like and Sunset and Sunrise.
 
-**How to Install and Run the Project••
+**How to Install and Run the Project**
 
 The project is built in React. You must have all your dependencies installed. 
 **To start** npm I
