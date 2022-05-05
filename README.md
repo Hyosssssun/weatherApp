@@ -1,9 +1,12 @@
 # Forecast For Your Tour
 
-## About The Project
-#  Hi I'm Elena - Product & Project Manager
-#  Hi I'm Jacques - React Engineer
-#  Hi I'm Hyosun Lee - React Engineer
+** About The Project**
+ -Hi I'm Elena - Product & Project Manager
+ 
+ -Hi I'm Jacques - React Engineer
+ 
+ -Hi I'm Hyosun Lee - React Engineer
+  
 We are all graduates of **The School of Code**. The School of Code is an amazing Software Development Bootcamp that last 16 weeks. We all took the risk to make changes in our lives and were lucky to be selected. The School of Code, gave us so many opportunities, to work in teams, to learn lots and practise lots of skills. It wasn't all about the Code! 
 One of the opportunities was to take part in a Hackathon for a Digital Project Studio, **383 Project**. This is how **Forecast For Your Tour** was born.
 
