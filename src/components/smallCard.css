@@ -1,0 +1,20 @@
+.smallcard {
+  display: flex;
+  justify-content: space-between;
+}
+.smallcardcontainer {
+  border: 5px, solid, black;
+  border-radius: 20px;
+  float: right;
+  width: 50%;
+  justify-content: space-between;
+  padding: 2px;
+}
+.smallcard {
+  align-items: center;
+}
+.smallcard h2,
+.smallcard p,
+.smallcard img {
+  max-width: 33.3%;
+}

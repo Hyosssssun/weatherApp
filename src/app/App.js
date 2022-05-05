@@ -1,22 +1,23 @@
 import React, { useState } from "react";
+import SmallCard from "../components/smallCard";
 import moment from "moment-timezone";
 import Detail from "../components/detail";
 import "./App.css";
 
 function App() {
-	const [location, setLocation] = useState("");
-	const [weatherInfo, setWeatherInfo] = useState([]);
-	const [basicInfo, setBasicInfo] = useState({
-		city: "",
-		day: "",
-		date: "",
-	});
+  const [location, setLocation] = useState("");
+  const [weatherInfo, setWeatherInfo] = useState([]);
+  const [basicInfo, setBasicInfo] = useState({
+    city: "",
+    day: "",
+    date: "",
+  });
+  
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const currentAPI = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
+  let weeksInfo = [];
 
-	const apiKey = process.env.REACT_APP_API_KEY;
-	const currentAPI = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
-	let weeksInfo = [];
-
-	const searchLocation = (event) => {
+  const searchLocation = (event) => {
 		event.key === "Enter" &&
 			fetch(currentAPI)
 				.then((response) => response.json())
@@ -76,27 +77,28 @@ function App() {
 							}
 						});
 				});
-	};
+  };
 
-	console.log("***** basic info *****", basicInfo);
-	console.log("***** weather info *****", weatherInfo);
-	return (
-		<div className="App">
-			<h1>Welcome to Our app </h1>
-			--------------------------------------------------------------------
-			<section className="search-section">
-				<h2>Enter your city!</h2>
-				<input
-					value={location}
-					onChange={(event) => setLocation(event.target.value)}
-					onKeyPress={searchLocation}
-					placeholder="Enter Location"
-					type="text"
-				/>
-			</section>
-			{weatherInfo ? <Detail weatherInfo={weatherInfo} /> : <h3>Please enter your city</h3>}
-		</div>
-	);
+  console.log("***** basic info *****", basicInfo);
+  console.log("***** weather info *****", weatherInfo);
+  return (
+    <div className="App">
+      <h1>Welcome to Our app </h1>
+      --------------------------------------------------------------------
+      <section className="search-section">
+        <h2>Enter your city!</h2>
+        <input
+          value={location}
+          onChange={(event) => setLocation(event.target.value)}
+          onKeyPress={searchLocation}
+          placeholder="Enter Location"
+          type="text"
+        />
+       </section>
+      <SmallCard basicInfo={basicInfo} weatherInfo={weatherInfo} />
+      {weatherInfo ? <Detail weatherInfo={weatherInfo} /> : <h3>Please enter your city</h3>}
+    </div>
+  );
 }
 
 export default App;
