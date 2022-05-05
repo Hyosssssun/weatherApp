@@ -1,20 +1,52 @@
-.smallcard {
-  display: flex;
-  justify-content: space-between;
-}
 .smallcardcontainer {
-  border: 5px, solid, black;
-  border-radius: 20px;
   float: right;
   width: 50%;
   justify-content: space-between;
-  padding: 2px;
+  margin-left: 2.5px;
 }
+
 .smallcard {
+  border: 2px solid #676ca9;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
-.smallcard h2,
-.smallcard p,
-.smallcard img {
-  max-width: 33.3%;
+.smallcard:hover {
+  box-shadow: 1px 1px;
+  cursor: pointer;
+}
+.smallcard:not(:last-child) {
+  margin-bottom: 5px;
+
+}
+
+.rightsidesmallcard {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  align-items: center;
+}
+
+.smallcard > h2 {
+  margin: 0 0 0 5px;
+}
+.temp {
+  margin: 0 5px 0 0;
+}
+@media (max-width: 700px) {
+  .smallcardcontainer {
+    width: 100%;
+    margin-left: 0;
+  }
+  .smallcard {
+    margin-top: 5px;
+  }
+  .rightsidesmallcard {
+    width: 55%;
+  }
+  .smallcard:hover{
+    cursor: auto;
+    box-shadow: 0 0;
+  }
 }

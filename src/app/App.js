@@ -62,7 +62,7 @@ function App() {
 										weather: thisday.weather[0].main,
 										feelsLike:
 											Math.round(Number(thisday.feels_like.day)) + " °C",
-										humidity: thisday.humidity,
+										humidity: thisday.humidity + "%",
 										sunrise: moment
 											.unix(thisday.sunrise)
 											.tz(weeks.timezone)
@@ -82,18 +82,18 @@ function App() {
   console.log("***** basic info *****", basicInfo);
   console.log("***** weather info *****", weatherInfo);
   return (
-	<div className="App">
-		<section className="search-section">
-			<h1>Welcome to Our app </h1>
-			--------------------------------------------------------------------
-			<h2>Enter your city!</h2>
-			<input
-				value={location}
-				onChange={(event) => setLocation(event.target.value)}
-				onKeyPress={searchLocation}
-				placeholder="Enter Location"
-				type="text"
-			/>
+<div className="App">
+  <section className="search-section">
+      <h1>Forecast For Your Tour</h1>
+      -------------------------------------
+      <h2>Enter your city!</h2>
+      <input
+          value={location}
+          onChange={(event) => setLocation(event.target.value)}
+          onKeyPress={searchLocation}
+          placeholder="Enter Location"
+          type="text"
+      />
 		</section>
 		{weatherInfo.length > 1 ? (
 			<section className="display-section">
@@ -101,10 +101,11 @@ function App() {
 				<SmallCard className="small-card" basicInfo={basicInfo} weatherInfo={weatherInfo} />
 			</section>
 		) : (
-			<h3>Hi welcome</h3>
+      <section className="display-section">
+			 <h3>Please enter your city</h3>
+      </section>
 		)}
 	</div>
-);
-}
+  )}
 
 export default App;
