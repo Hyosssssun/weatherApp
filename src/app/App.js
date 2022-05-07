@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   const [location, setLocation] = useState("");
   const [weatherInfo, setWeatherInfo] = useState([]);
-//   const [displayInfo, setDisplayInfo] = useState({})
+  const [displayIndex, setDisplayIndex] = useState(0)
   const [basicInfo, setBasicInfo] = useState({
     city: "",
     day: "",
@@ -76,15 +76,11 @@ function App() {
             });
         });
   };
+ 
 
-  console.log("***** basic info *****", basicInfo);
-  console.log("***** weather info *****", weatherInfo);
+  // console.log("***** basic info *****", basicInfo);
+  // console.log("***** weather info *****", weatherInfo);
 
-//   function handleClick(index) {
-//     console.log("i am clicking", index);
-// 	setDisplayInfo(weatherInfo[index])
-
-//   }
   return (
     <div className="App">
       <section className="search-section">
@@ -93,7 +89,7 @@ function App() {
         <h2>Enter your city!</h2>
         <input
           value={location}
-          onChange={(event) => setLocation(event.target.value)}
+          onChange={(e) => setLocation(e.target.value)}
           onKeyPress={searchLocation}
           placeholder="Enter Location"
           type="text"
@@ -104,18 +100,18 @@ function App() {
           <Detail
             className="detail-card"
             basicInfo={basicInfo}
-            weatherInfo={weatherInfo[0]}
+            weatherInfo={weatherInfo[displayIndex]}
           />
           <SmallCard
             className="small-card"
             basicInfo={basicInfo}
             weatherInfo={weatherInfo}
-            // handleClick={handleClick}
+            findDay={e=>setDisplayIndex(e.target.id)}
           />
         </section>
       ) : (
         <section className="display-section">
-          <h3>Please enter your city</h3>
+          <h3>❤️</h3>
         </section>
       )}
     </div>
